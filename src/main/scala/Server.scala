@@ -4,14 +4,16 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.Http.ServerBinding
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
-import endpoint.QueryRoute._
-import repository.Resolvers.Resolvers
-import persistence.Fetch
-import repository.schema.QueryTypes
+import com.typesafe.config.ConfigFactory
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.io.StdIn
 import scala.util.{Failure, Success}
+
+import endpoint.QueryRoute._
+import repository.Resolvers.Resolvers
+import persistence.Fetch
+import repository.schema.QueryTypes
 
 object Server extends App {
   implicit val system: ActorSystem = ActorSystem("spluxx-com")
@@ -19,12 +21,13 @@ object Server extends App {
   implicit val ec: ExecutionContext = system.dispatcher
   val log = Logging(system.eventStream, "spluxx-com")
 
-  val PORT = 8080
-  val HOST = "localhost"
-
   for {
     data <- Fetch.pokemonData
   } {
+    val env = sys.env.getOrElse("SPLUXX_COM_EXECUTION_ENV", "dev")
+    val HOST = ConfigFactory.load().getString(s"server.$env.host")
+    val PORT = ConfigFactory.load().getInt(s"server.$env.port")
+
     val schema = QueryTypes.schema
     val queryResolver = new Resolvers(data)
     val route: Route = queryRoute(schema, queryResolver)

@@ -16,8 +16,9 @@ libraryDependencies ++=
     "org.scalaj" %% "scalaj-http" % "2.4.0",
     "com.jsuereth" %% "scala-arm" % "2.0",
     "org.sangria-graphql" %% "sangria-circe" % "1.2.1",
-    "de.heikoseeberger" %% "akka-http-circe" % "1.21.0"
-  ) ::: List(
+    "de.heikoseeberger" %% "akka-http-circe" % "1.21.0",
+    "com.typesafe" % "config" % "1.3.2"
+) ::: List(
     "io.circe" %% "circe-core",
     "io.circe" %% "circe-generic",
     "io.circe" %% "circe-parser"
