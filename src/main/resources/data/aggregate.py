@@ -26,8 +26,8 @@ with open('pokemon.csv', 'r') as pokedata:
         res.append({
             'id': idx,
             'name': row['identifier'],
-            'weight': row['weight'],
-            'height': row['height'],
+            'weight': str(float(row['weight'])/10),
+            'height': str(float(row['height'])/10),
             'description': flavor_texts[int(idx)],
             'img_url': "http://pokeapi.co/media/sprites/pokemon/"+idx+".png",
         })

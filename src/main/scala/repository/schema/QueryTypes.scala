@@ -5,8 +5,8 @@ import repository.schema.DataTypes._
 import sangria.schema._
 
 object QueryTypes {
-  val Weight = Argument("weight", IntType)
-  val Height = Argument("height", IntType)
+  val Weight = Argument("weight", FloatType)
+  val Height = Argument("height", FloatType)
 
   val QueryType = ObjectType("Query", fields[Resolvers, Unit](
     Field(
