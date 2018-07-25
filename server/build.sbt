@@ -25,4 +25,11 @@ libraryDependencies ++=
     "io.circe" %% "circe-parser"
   ).map(_ % circeVersion)
 
+mainClass in Compile := Some("Server")
 
+dockerBaseImage       := "openjdk:jre-alpine"
+
+
+enablePlugins(JavaAppPackaging)
+enablePlugins(DockerPlugin)
+enablePlugins(AshScriptPlugin)
