@@ -3,7 +3,9 @@ import akka.event.Logging
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.Http.ServerBinding
 import akka.http.scaladsl.server.Route
+import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
+import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
 import com.typesafe.config.ConfigFactory
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -11,6 +13,7 @@ import scala.io.StdIn
 import scala.util.{Failure, Success}
 
 import endpoint.QueryRoute._
+import endpoint.DataRoute._
 import repository.Resolvers.Resolvers
 import persistence.Fetch
 import repository.schema.QueryTypes
@@ -29,7 +32,15 @@ object Server extends App {
 
     val schema = QueryTypes.schema
     val queryResolver = new Resolvers(data)
-    val route: Route = queryRoute(schema, queryResolver)
+    val route: Route = cors() {
+      pathPrefix("api") {
+        dataRoute ~ queryRoute(schema, queryResolver)
+      } ~
+      get { ctx =>
+        ctx.complete(ctx.request.toString)
+      }
+    }
+
     val binding: Future[ServerBinding] = Http().bindAndHandle(route, HOST, PORT)
 
     binding.onComplete {

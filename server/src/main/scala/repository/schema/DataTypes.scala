@@ -5,7 +5,15 @@ import sangria.schema._
 import scala.util.Random
 
 object DataTypes {
-  case class Pokemon(id: Int, name: String, height: Double, weight: Double, description: List[String], img_url: String)
+  case class Pokemon(
+    id: Int,
+    name: String,
+    height: Double,
+    weight: Double,
+    description: List[String],
+    img_url: String,
+    cry_url: String
+  )
 
   val PokemonType = ObjectType(
     "Pokemon",
@@ -16,7 +24,8 @@ object DataTypes {
       Field("weight", FloatType, resolve = ctx => ctx.value.weight),
       Field("description", StringType, resolve = ctx =>
         ctx.value.description(new Random().nextInt(ctx.value.description.length))),
-      Field("img_url", StringType, resolve = ctx => ctx.value.img_url)
+      Field("img_url", StringType, resolve = ctx => ctx.value.img_url),
+      Field("cry_url", StringType, resolve = ctx => ctx.value.cry_url)
     )
   )
 }

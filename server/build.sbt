@@ -12,6 +12,7 @@ libraryDependencies ++=
     "org.sangria-graphql" %% "sangria-circe" % "1.2.1",
     "com.typesafe.akka" %% "akka-http"   % "10.1.3",
     "com.typesafe.akka" %% "akka-stream" % "2.5.12",
+    "ch.megard" %% "akka-http-cors" % "0.3.0",
     "io.monix" %% "monix" % "3.0.0-RC1",
     "org.scalaj" %% "scalaj-http" % "2.4.0",
     "com.jsuereth" %% "scala-arm" % "2.0",

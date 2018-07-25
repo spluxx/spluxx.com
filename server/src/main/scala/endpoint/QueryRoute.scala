@@ -17,13 +17,14 @@ import scala.util.Try
 import endpoint.QueryExceptionHandler.queryExceptionHandler
 
 object QueryRoute {
+
   def queryRoute(schema: Schema[Resolvers, Unit], queryResolver: Resolvers)(implicit ec: ExecutionContext): Route = {
     handleExceptions(queryExceptionHandler) {
       (post & path("graphql")) {
         entity(as[Json]) { query =>
           queryResult(query, schema, queryResolver)
         }
-      } ~ {
+      } ~ (get & path("graphql")) {
         getFromResource("graphiql.html")
       }
     }
