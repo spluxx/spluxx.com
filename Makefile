@@ -1,15 +1,9 @@
 .POHNY: build-server, build-web, build-docker, build, run, debug, stop
 
-build-server:
-	(cd server; sbt ";compile;docker:stage")
-build-web:
-	(cd web; npm run build)
-build-docker: 
+build: 
+	(cd server ; sbt ";compile;docker:publishLocal")
+	(cd web ; npm run build)
 	docker-compose build
-build:
-	build-server
-	build-web
-	build-docker
 run: 
 	docker-compose up -d
 debug:

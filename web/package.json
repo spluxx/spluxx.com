@@ -14,6 +14,7 @@
     "flickity-as-nav-for": "^2.0.1",
     "vue": "^2.5.2",
     "vue-flickity": "^1.1.2",
+    "vue-howler": "^0.7.0",
     "vue-slider-component": "^2.7.5",
     "vue-switches": "^2.0.1"
   },

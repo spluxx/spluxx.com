@@ -26,6 +26,8 @@ libraryDependencies ++=
   ).map(_ % circeVersion)
 
 mainClass in Compile := Some("Server")
+version in Docker := "latest"
+packageName in Docker := "spluxxcom_api"
 
 dockerBaseImage       := "openjdk:jre-alpine"
 

@@ -9,10 +9,10 @@ import scala.concurrent.ExecutionContext
 object DataRoute {
   def dataRoute(implicit ec: ExecutionContext): Route = {
     get {
-      path("images" / IntNumber) { pokenum =>
-        getFromResource(s"data/image_fetcher/images/$pokenum.png")
-      } ~ path("cries" / IntNumber) { pokenum =>
-        getFromResource(s"data/cries/$pokenum.mp3")
+      path("images" / Segment) { imageFile =>
+        getFromResource(s"data/image_fetcher/images/$imageFile")
+      } ~ path("cries" / Segment) { soundFile =>
+        getFromResource(s"data/cries/$soundFile")
       }
     }
   }

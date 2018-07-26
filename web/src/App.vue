@@ -2,25 +2,29 @@
   <div id="app">
     <div id="header">
       <img id="logo" src="./assets/logo.png">
-      <h1> PokeSearch </h1>
+      <div id="logo-text">
+        <h1> PokeSearch </h1>
+        <p> Double-click for sound </p>
+      </div>
     </div>
 
     <div id="body">
-
-      <switches id="toggle" v-model="adjustWeight" :type-bold="true" :theme="switchTheme" :color="switchColor"/>
-
-      <vue-slider class="slider" v-model="logWeight" :width="500" :disabled="!adjustWeight"
-                :min="-1" :max="3" :interval="0.00001" :clickable="false"
-                :formatter="weightStr" @drag-end="updateWeight"/>
-      <vue-slider class="slider" v-model="logHeight" :width="500" :disabled="adjustWeight"
-                :min="-1" :max="1.5" :interval="0.00001" :clickable="false"
-                :formatter="heightStr" @drag-end="updateHeight"/>
+      <div id="controls">
+        <div id="sliders">
+          <vue-slider class="slider" v-model="logWeight" :width="500"
+                      :min="-1" :max="3" :interval="0.00001" :clickable="false"
+                      :formatter="weightStr" @drag-end="updateWeight"/>
+          <vue-slider class="slider" v-model="logHeight" :width="500"
+                      :min="-1" :max="1.5" :interval="0.00001" :clickable="false"
+                      :formatter="heightStr" @drag-end="updateHeight"/>
+        </div>
+      </div>
 
       <div id="flickity-wrapper">
         <flickity v-if="pokeData.length > 0" class="flickity" :options="flickityOptions"
                   v-on:init="registerMainFlickity">
           <div class="carousel-cell" v-for="poke in pokeData">
-            <img class="poke-image" v-bind:src="poke.img_url">
+            <audio-image :sources="[poke.cry_url]" :img_url="poke.img_url"></audio-image>
             <p> {{poke.name.replace(/^\w/, c => c.toUpperCase())}}, {{poke.weight}}kg, {{poke.height}}m </p>
             <p> {{poke.description}} </p>
           </div>
@@ -44,6 +48,7 @@
 import vueSlider from 'vue-slider-component';
 import Switches from 'vue-switches';
 import Flickity from 'vue-flickity';
+import AudioImage from './audio-image.vue';
 import 'flickity-as-nav-for';
 import * as DataFetcher from './dataFetcher';
 
@@ -52,14 +57,17 @@ export default {
   components: {
     vueSlider,
     Flickity,
-    Switches
+    Switches,
+    AudioImage
   },
   data () {
     return {
       adjustWeight: true,
       switchTheme: "bootstrap",
       switchColor: "info",
-      mainFlickity: null,
+      mainFlickity
+        : null,
+      audioFormat: ["mp3"],
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
@@ -129,17 +137,29 @@ export default {
   margin-top: 30px;
 }
 
-h1 {
-  font-weight: normal;
-  font-size: 48px;
-}
-
 #header {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   width: 100%;
+}
+
+#logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+#logo-text h1 {
+  font-weight: normal;
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+#logo-text p {
+  margin-top: -10px;
+  text-align: left;
 }
 
 #body {
@@ -149,10 +169,11 @@ h1 {
   align-items: center;
 }
 
-#logo {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+#controls {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .slider {
@@ -182,18 +203,6 @@ h1 {
   font-weight: bold;
   padding-left: 30px;
   padding-right: 30px;
-}
-
-.poke-image {
-  width: 300px;
-  height: 300px;
-  margin: 30px;
-  user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #flickity-slave-wrapper {

@@ -1,7 +1,7 @@
 version: '0.1'
 services:
   api:
-    build: ./server/target/docker/stage
+    image: spluxxcom_api
     ports:
       - "8082:8082"
     stdin_open: true
