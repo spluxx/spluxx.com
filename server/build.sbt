@@ -1,4 +1,4 @@
-name := "spluxx.com"
+name := "api.spluxx.com"
 
 version := "0.1"
 
@@ -28,7 +28,6 @@ libraryDependencies ++=
 mainClass in Compile := Some("Server")
 
 dockerBaseImage       := "openjdk:jre-alpine"
-
 
 enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)

@@ -28,8 +28,8 @@ object Server extends App {
     data <- Fetch.pokemonData
   } {
     val env = sys.env.getOrElse("SPLUXX-COM-EXEC-ENV", "dev")
-    val HOST = ConfigFactory.load().getString(s"server.${env}.host")
-    val PORT = ConfigFactory.load().getInt(s"server.${env}.port")
+    val HOST = ConfigFactory.load().getString(s"server.$env.host")
+    val PORT = ConfigFactory.load().getInt(s"server.$env.port")
 
     val schema = QueryTypes.schema
     val queryResolver = new Resolvers(data)
