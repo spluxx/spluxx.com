@@ -9,15 +9,24 @@
     </div>
 
     <div id="body">
+
       <div id="controls">
         <div id="sliders">
-          <vue-slider class="slider" v-model="logWeight" :width="500"
+          <vue-slider class="slider" v-model="logWeight" :width="sliderWidth"
                       :min="-1" :max="3" :interval="0.00001" :clickable="false"
                       :formatter="weightStr" @drag-end="updateWeight"/>
-          <vue-slider class="slider" v-model="logHeight" :width="500"
+          <vue-slider class="slider" v-model="logHeight" :width="sliderWidth"
                       :min="-1" :max="1.5" :interval="0.00001" :clickable="false"
                       :formatter="heightStr" @drag-end="updateHeight"/>
         </div>
+      </div>
+
+      <div id="flickity-slave-wrapper">
+        <flickity v-if="pokeData.length > 0" class="flickity-slave" :options="flickitySlaveOptions">
+          <div class="carousel-cell-slave" v-for="poke in pokeData">
+            <img class="poke-image-slave" v-bind:src="poke.img_url">
+          </div>
+        </flickity>
       </div>
 
       <div id="flickity-wrapper">
@@ -31,16 +40,8 @@
         </flickity>
       </div>
 
-      <div id="flickity-slave-wrapper">
-        <flickity v-if="pokeData.length > 0" class="flickity-slave" :options="flickitySlaveOptions">
-          <div class="carousel-cell-slave" v-for="poke in pokeData">
-            <img class="poke-image-slave" v-bind:src="poke.img_url">
-          </div>
-        </flickity>
-      </div>
 
     </div>
-
   </div>
 </template>
 
@@ -51,6 +52,7 @@ import Flickity from 'vue-flickity';
 import AudioImage from './audio-image.vue';
 import 'flickity-as-nav-for';
 import * as DataFetcher from './dataFetcher';
+import $ from 'jquery';
 
 export default {
   name: 'app',
@@ -65,14 +67,14 @@ export default {
       adjustWeight: true,
       switchTheme: "bootstrap",
       switchColor: "info",
-      mainFlickity
-        : null,
-      audioFormat: ["mp3"],
+      sliderWidth: Math.min($(window).width() * 0.9, 500),
+      mainFlickity : null,
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
         pageDots: false,
-        wrapAround: true
+        wrapAround: true,
+        adaptiveHeight: true
       },
       flickitySlaveOptions: {
         asNavFor: ".flickity",
@@ -128,45 +130,56 @@ export default {
 </script>
 
 <style>
+html body {
+  margin: 0;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 30px;
+  margin: 5%;
+  width: 90%;
+  height: 100%;
 }
 
 #header {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: auto;
   width: 100%;
 }
 
 #logo {
-  width: 100px;
-  height: 100px;
+  width: 10%;
+  height: auto;
   margin-right: 10px;
 }
 
 #logo-text h1 {
   font-weight: normal;
   font-size: 48px;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
 #logo-text p {
   margin-top: -10px;
+  margin-bottom: 0;
   text-align: left;
 }
 
 #body {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: space-around;
+  align-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 #controls {
@@ -174,6 +187,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
 .slider {
@@ -182,51 +196,37 @@ export default {
 
 #flickity-wrapper {
   border: grey solid 1pt;
-  width: 500px;
-  height: 500px;
-  margin-top: 20px;
-}
-
-.flickity {
-  width: 500px;
-  height: 500px;
+  width: 90%;
+  height: 100%;
 }
 
 .carousel-cell {
-  width: 500px;
-  height: 500px;
   background-color: lightgrey;
+  width: 100%;
 }
 
 .carousel-cell p {
-  margin-top: 0px;
+  margin-top: 0;
   font-weight: bold;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #flickity-slave-wrapper {
   border: grey solid 1pt;
-  border-top: none;
-  width: 500px;
-  height: 100px;
-  margin-top: 0px;
+  border-bottom: none;
+  margin-top: 5%;
+  margin-bottom: 0;
+  width: 90%;
 }
 
 .flickity-slave {
-  width: 500px;
-  height: 100px;
-}
-
-.carousel-cell-slave {
-  width: 100px;
-  height: 100px;
+  width: 100%;
 }
 
 .poke-image-slave {
   opacity: 0.6;
   margin-top: 5px;
-  margin-bottom: 5px;
   width: 90px;
   height: 90px;
   user-drag: none;
@@ -236,4 +236,26 @@ export default {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+@media screen and (min-width: 720px) {
+  #app {
+    width: 600px;
+    margin: auto;
+  }
+
+  #flickity-wrapper {
+    margin-top: 10px;
+    margin-bottom: 0;
+    order: 1;
+  }
+
+  #flickity-slave-wrapper {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: none;
+    border-bottom: grey solid 1pt;
+    order: 2;
+  }
+}
+
 </style>

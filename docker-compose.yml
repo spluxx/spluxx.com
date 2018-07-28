@@ -1,7 +1,7 @@
 version: '0.1'
 services:
   api:
-    image: spluxxcom_api
+    image: spluxx/spluxxcom_api
     ports:
       - "8082:8082"
     stdin_open: true
@@ -10,3 +10,4 @@ services:
     build: ./web
     ports:
       - "80:80"
+    entrypoint: /init.sh
