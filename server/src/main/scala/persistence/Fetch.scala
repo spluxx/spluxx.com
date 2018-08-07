@@ -7,12 +7,13 @@ import io.circe.Decoder
 import io.circe.generic.semiauto._
 
 import scala.io.Source
+import scala.util.Try
 
 object Fetch {
   implicit val pokeDecoder: Decoder[Pokemon] = deriveDecoder[Pokemon]
-  val pokemonData: Option[Vector[Pokemon]] = {
+  val pokemonData: Try[Vector[Pokemon]] = {
     managed(Source.fromResource("pokedata.json")).map(data => {
-      decode[Vector[Pokemon]](data.mkString).toOption
-    }).opt.flatten
+      decode[Vector[Pokemon]](data.mkString).toTry
+    }).tried.flatten
   }
 }
