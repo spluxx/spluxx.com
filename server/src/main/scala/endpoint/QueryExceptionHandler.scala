@@ -12,6 +12,7 @@ object QueryExceptionHandler {
     case error: QueryAnalysisError => _.complete(BadRequest -> error.resolveError)
     case error: ErrorWithResolver => _.complete(InternalServerError -> error.resolveError)
     case error: QuerySyntaxError => _.complete(BadRequest -> error.getMessage)
+    case e: Exception => _.complete(BadRequest -> e.toString)
   }
 }
 
