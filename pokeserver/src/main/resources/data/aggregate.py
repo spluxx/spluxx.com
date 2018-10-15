@@ -29,8 +29,8 @@ with open('pokemon.csv', 'r') as pokedata:
             'weight': str(float(row['weight'])/10),
             'height': str(float(row['height'])/10),
             'description': flavor_texts[int(idx)],
-            'img_url': "http://spluxx.com/api/images/"+idx+".png",
-            'cry_url': "http://spluxx.com/api/cries/"+idx+".mp3"
+            'img_url': "http://spluxx.com/poke/api/images/"+idx+".png",
+            'cry_url': "http://spluxx.com/poke/api/cries/"+idx+".mp3"
         })
 
 print(json.dumps(res, indent=4, separators=(',', ': ')))
