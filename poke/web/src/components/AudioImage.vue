@@ -7,6 +7,7 @@
 <script>
   import VueHowler from 'vue-howler'
   export default {
+    name: 'AudioImage',
     mixins: [VueHowler],
     props: ['img_url'],
     data() {

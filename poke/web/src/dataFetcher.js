@@ -20,7 +20,7 @@ export const postData = (url = ``, data = {}) => {
 };
 
 export const pokemonsWithHeight = (height = 7.3) => {
-  return postData("http://poke.spluxx.com/api/graphql", {
+  return postData("http://spluxx.com/api/graphql", {
     query: `
       {
         pokemonsWithHeight(height: ${height}) {
@@ -37,7 +37,7 @@ export const pokemonsWithHeight = (height = 7.3) => {
 };
 
 export const pokemonsWithWeight = (weight = 500) => {
-  return postData("http://poke.spluxx.com/api/graphql", {
+  return postData("http://spluxx.com/api/graphql", {
     query: `
       {
         pokemonsWithWeight(weight: ${weight}) {
