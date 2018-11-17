@@ -4,7 +4,8 @@
       <img id="logo" src="../assets/logo.png">
       <div id="logo-text">
         <h1> PokeSearch </h1>
-        <p> Double-click for sound </p>
+        <p style="display: inline"> Double-click for sound </p>
+        <a href="https://github.com/spluxx/spluxx.com">(Github)</a>
       </div>
     </div>
 
@@ -127,7 +128,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   html body {
     margin: 0;
   }
@@ -149,6 +150,7 @@
     align-items: center;
     height: auto;
     width: 100%;
+    padding-top: 30px;
   }
 
   #logo {

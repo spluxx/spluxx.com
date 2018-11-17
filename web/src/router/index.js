@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import PokePage from '@/components/PokePage'
-import ChatPage from '@/components/ChatPage'
 import PortfolioPage from '@/components/PortfolioPage'
 import NotFoundComponent from '@/components/NotFoundComponent'
 
@@ -19,11 +18,6 @@ export default new Router({
       path: '/poke',
       name: 'PokePage',
       component: PokePage
-    },
-    {
-      path: '/chat',
-      name: 'ChatPage',
-      component: ChatPage
     },
     {
       path: '*',
