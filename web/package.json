@@ -12,11 +12,12 @@
   "dependencies": {
     "ajv": "^6.5.2",
     "flickity-as-nav-for": "^2.0.1",
+    "fs-web": "^1.0.1",
     "jquery": "^3.3.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
     "vue-flickity": "^1.1.2",
     "vue-howler": "^0.7.0",
+    "vue-router": "^3.0.1",
     "vue-slider-component": "^2.7.5",
     "vue-switches": "^2.0.1"
   },
@@ -44,6 +45,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
