@@ -3,7 +3,7 @@
     <transition name="slide-fade">
       <div v-show="password !== pw" class="container bump-top">
         <div class="row center justify-content-center">
-          <div class="input-group col-4">
+          <div class="input-group col-md-4">
             <input type="password" class="form-control bg-light"
                    placeholder="과연 맞출 수 있을까?" v-model="password">
           </div>
@@ -14,37 +14,37 @@
     <transition name="slide-fade">
       <div v-if="password === pw" class="container">
         <div class="row center justify-content-center">
-          <div class="card col-7 letter-wrapper bg-secondary">
+          <div class="card col-md-7 letter-wrapper bg-secondary">
             <div class="row center justify-content-center boo">
-              <div class="card col-12 text-white bg-dark">
+              <div class="card col-md-12 text-white bg-dark">
                 <div class="card-body">
                   <h1> {{ header }} </h1>
                 </div>
               </div>
             </div>
             <div class="row center justify-content-center boo">
-              <div class="card col-12 text-white bg-dark">
+              <div class="card col-md-12 text-white bg-dark">
                 <div class="card-body letter-body">
                   <p> {{ paragraph1 }} </p>
                 </div>
               </div>
             </div>
             <div class="row center justify-content-center boo">
-              <div class="card col-12 text-white bg-dark">
+              <div class="card col-md-12 text-white bg-dark">
                 <div class="card-body letter-body">
                   <p> {{ paragraph2 }} </p>
                 </div>
               </div>
             </div>
             <div class="row center justify-content-center boo">
-              <div class="card col-12 text-white bg-dark">
+              <div class="card col-md-12 text-white bg-dark">
                 <div class="card-body letter-body">
                   <p> {{ paragraph3 }} </p>
                 </div>
               </div>
             </div>
             <div class="row center justify-content-center boo">
-              <div class="card col-12 text-white bg-dark">
+              <div class="card col-md-12 text-white bg-dark">
                 <div class="card-body">
                   <h3> {{ footer }} </h3>
                 </div>
