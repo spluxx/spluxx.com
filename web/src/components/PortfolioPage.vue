@@ -10,24 +10,19 @@
         <div class="row center">
           <div class="col-md-12 card">
             <div class="card-body">
-              <a class="card-title" href="https://github.com/spluxx/music_chat">Music Chat</a>
-              <p class="card-text"></p>
+              <a>Music Chat</a>  <a class="card-title" href="http://musicchat.live">(Link)</a>
+              <p class="card-text"> A chatting app that allows people in the same "room" to listen to the same music simultaneously. </p>
             </div>
             <div class="row center">
-
-              <div class="col-sm-11 card ml-auto mr-auto">
-                <img class="card-img-top" src="../assets/music_chat_chatting.png">
-              </div>
-
               <div class="col-md-6">
                 <div class="col-md-12 card">
-                  <img class="card-img-top" src="../assets/music_chat_login.png">
+                  <img class="card-img-top" src="../assets/music_chat_front.png">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="col-md-12 card">
-                  <img class="card-img-top" src="../assets/music_chat_login_fail.png">
+                  <img class="card-img-top" src="../assets/music_chat_chat.png">
                 </div>
               </div>
 
@@ -40,8 +35,8 @@
           <div class="col-md-6">
             <div class="col-md-12 card">
               <div class="card-body">
-                <a class="card-title" href="https://github.com/spluxx/dynamic-scala">Dynamic Scala</a>
-                <p class="card-text"></p>
+                <a>Dynamic Scala</a><a class="card-title" href="https://github.com/spluxx/dynamic-scala">(Github)</a>
+                <p class="card-text"> Yet another state control; Loop in a purely functional context. </p>
               </div>
               <img class="card-img-top" src="../assets/dynamic_scala.png">
             </div>
@@ -49,8 +44,8 @@
           <div class="col-md-6 ml-auto">
             <div class="col-md-12 card">
               <div class="card-body">
-                <a class="card-title" href="http://spluxx.com/poke">Poke Search</a>
-                <p class="card-text"></p>
+                <a>Poke Search</a><a class="card-title" href="http://spluxx.com/poke">(Link)</a>
+                <p class="card-text"> Find your pokemon that has the same weight/height as you! </p>
               </div>
               <img class="card-img-top" src="../assets/poke_search.png">
             </div>
@@ -61,19 +56,19 @@
           <div class="col-md-6">
             <div class="col-md-12 card">
               <div class="card-body">
-                <h5 class="card-title">Cell Society</h5>
-                <p class="card-text"></p>
+                <a>GameMaker</a><a class="card-title" href="https://github.com/spluxx/gamemaker">(Github)</a>
+                <p class="card-text">Game authoring environment for turn-based strategy games</p>
               </div>
-              <div class="card-img-bottom">
-                <iframe width="100%" height="500" src="https://www.youtube.com/embed/GMeG-adQeMA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card-img-top">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/5OeS4lR2X5s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
           <div class="col-md-6 ml-auto">
             <div class="col-md-12 card">
               <div class="card-body">
-                <h5 class="card-title">SLogo</h5>
-                <p class="card-text"></p>
+                <a class="card-title">SLogo</a>
+                <p class="card-text">Replica of Logo</p>
               </div>
               <div class="card-img-top">
                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/Kf3CCZWIkTg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -86,14 +81,25 @@
           <div class="col-md-6">
             <div class="col-md-12 card">
               <div class="card-body">
-                <h5 class="card-title">Pika Breakout</h5>
-                <p class="card-text"></p>
+                <a class="card-title">Pika Breakout</a>
+                <p class="card-text">A variation of Breakout</p>
               </div>
               <div class="card-img-top">
                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/M-UqvpM0Czo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
+          <div class="col-md-6">
+          <div class="col-md-12 card">
+            <div class="card-body">
+              <a class="card-title">Cell Society</a>
+              <p class="card-text">Four cellular automata models with real-time adjustable parameters</p>
+            </div>
+            <div class="card-img-bottom">
+              <iframe width="100%" height="500" src="https://www.youtube.com/embed/GMeG-adQeMA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
 
